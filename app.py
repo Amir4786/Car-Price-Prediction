@@ -17,12 +17,12 @@ standard_to=StandardScaler()
 def predict():
     Fuel_Type_Diesal=0
     if request.method=='POST':
-        Year=int(request.form(['year']))
-        Present_Price=float(request.form(['Present_Price']))
-        Kms_Driven=int(request.form(['Kms_Driven']))
+        Year=int(request.form['year'])
+        Present_Price=float(request.form['Present_Price'])
+        Kms_Driven=int(request.form['Kms_Driven'])
         Kms_Driven2=np.log(Kms_Driven)
-        Owner=int(request.form(['Owner']))
-        Fuel_Type_Petrol=request.form(['Fuel_Type_Petrol'])
+        Owner=int(request.form['Owner'])
+        Fuel_Type_Petrol=request.form['Fuel_Type_Petrol']
         if (Fuel_Type_Petrol==1):
             Fuel_Type_Petrol=1
             Fuel_Type_Diesal=0
@@ -33,12 +33,12 @@ def predict():
             Fuel_Type_Diesal=1
             Fuel_Type_Petrol=0
         Year=2020-Year
-        Seller_Type_Individual=request.form(['Seller_Type_Individual'])
+        Seller_Type_Individual=request.form['Seller_Type_Individual']
         if (Seller_Type_Individual=='Individual'):
             Seller_Type_Individual=1
         else:
             Seller_Type_Individual=0
-        Transmission_Mannual=request.form(['Transmission_Mannual'])
+        Transmission_Mannual=request.form['Transmission_Mannual']
         if (Transmission_Mannual=='Mannual'):
             Transmission_Mannual=1
         else:
@@ -48,7 +48,7 @@ def predict():
         if output<0:
             return render_template('index.html',prediction_text='Sorry you cannot sell this car!')
         else:
-            return render_template('index.html',prediction_text="You can sell this car at .".format(output))
+            return render_template('index.html',prediction_text="You can sell this car at {}.".format(output))
     else:
         return render_template('index.html')
 if __name__=='__main__':

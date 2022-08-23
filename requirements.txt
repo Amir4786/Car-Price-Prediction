@@ -5,3 +5,4 @@ sklearn
 numpy
 requests
 flask
+gunicorn
